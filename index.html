@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Faye Tang | Contemporary Visual Artist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--accent:#003366;
+--gold:#D4AF37;
+--silver:#f4f4f4;
+--transition:all .8s cubic-bezier(.19,1,.22,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;cursor:none;}
+body{
+background:linear-gradient(135deg,#ffffff 0%,var(--silver) 100%);
+color:#111;
+font-family:'Inter',sans-serif;
+overflow-x:hidden;
+}
+
+/* 磁性鼠标 */
+#cursor{
+width:12px;
+height:12px;
+background:var(--accent);
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+z-index:9999;
+mix-blend-mode:difference;
+}
+
+/* 导航 */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:40px 70px;
+z-index:100;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:1.4rem;
+letter-spacing:6px;
+color:var(--accent);
+text-decoration:none;
+}
+
+.nav-links a{
+margin-left:40px;
+text-decoration:none;
+font-size:.7rem;
+letter-spacing:3px;
+text-transform:uppercase;
+color:#888;
+}
+
+/* 首页 */
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:clamp(3rem,10vw,6.5rem);
+font-style:italic;
+color:var(--accent);
+margin-bottom:20px;
+}
+
+.hero p{
+letter-spacing:10px;
+font-size:.75rem;
+color:#aaa;
+}
+
+/* 作品 */
+.works{
+max-width:1400px;
+margin:0 auto;
+padding:0 70px 150px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:100px;
+}
+
+.work{
+cursor:pointer;
+}
+
+.work img{
+width:100%;
+aspect-ratio:4/5;
+object-fit:cover;
+filter:grayscale(80%);
+transition:var(--transition);
+}
+
+.work:hover img{
+transform:scale(1.05);
+filter:grayscale(0%);
+}
+
+.title{
+margin-top:20px;
+font-family:'Playfair Display',serif;
+font-size:1.4rem;
+color:var(--accent);
+}
+
+.meta{
+font-size:.7rem;
+letter-spacing:2px;
+color:#999;
+margin-top:8px;
+}
+
+/* About */
+.about{
+background:#fff;
+padding:200px 70px;
+}
+
+.about-inner{
+max-width:1000px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1.5fr;
+gap:100px;
+}
+
+.about h2{
+font-family:'Playfair Display',serif;
+font-size:3rem;
+font-style:italic;
+color:var(--accent);
+}
+
+.gold-line{
+width:60px;
+height:2px;
+background:var(--gold);
+margin:40px 0;
+}
+
+.about p{
+line-height:2.1;
+color:#444;
+margin-bottom:30px;
+}
+
+/* 弹窗 */
+#lightbox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,255,255,.97);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+#lightbox img{
+max-width:80%;
+max-height:80vh;
+}
+
+/* 手机适配 */
+@media(max-width:1000px){
+nav{padding:30px;}
+.works{grid-template-columns:1fr;gap:60px;padding:0 30px 100px;}
+.about-inner{grid-template-columns:1fr;gap:40px;}
+#cursor{display:none;}
+*{cursor:auto;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="cursor"></div>
+
+<nav>
+FAYE TANG
+<div class="nav-links">
+Works
+About
+Contact
+</div>
+</nav>
+
+<header class="hero">
+<h1>Silence & Memories</h1>
+<p>Contemporary Visual Artist Portfolio</p >
+</header>
+
+<section class="works" id="works">
+
+<div class="work" onclick="openImg('1.jpg')">
+<img src="1.jpg" alt="Line Portrait">
+<div class="title">Line Portrait</div>
+<div class="meta">Photography / 2026</div>
+</div>
+
+<div class="work" onclick="openImg('2.jpg')">
+<img src="2.jpg" alt="Prologue of Light Blue">
+<div class="title">Prologue of Light Blue</div>
+<div class="meta">Visual Poetics / 2026</div>
+</div>
+
+<div class="work" onclick="openImg('3.jpg')">
+<img src="3.jpg" alt="Quiet Composition">
+<div class="title">Quiet Composition</div>
+<div class="meta">Minimalist Space Study / 2025</div>
+</div>
+
+<div class="work" onclick="openImg('4.jpg')">
+<img src="4.jpg" alt="The Ocean Realm">
+<div class="title">The Ocean Realm</div>
+<div class="meta">Atmospheric Exploration / 2025</div>
+</div>
+
+</section>
+
+<section class="about" id="about">
+<div class="about-inner">
+
+<div>
+<h2>做自己的屋檐</h2>
+<div class="gold-line"></div>
+</div>
+
+<div>
+<p>我是唐雨菲（Faye Tang），目前致力于当代视觉艺术的跨媒介探索。我的创作关注“寂静、记忆与情绪空间”，并通过极简视觉语言表达情绪层次。</p >
+
+<p>我常使用克莱因蓝（Klein Blue）作为情绪表达的核心色彩，通过留白与光影关系，让作品在视觉上保持安静但富有力量。</p >
+
+<p style="font-style:italic;color:#003366;">“To capture the quiet moments that people usually overlook.”</p >
+</div>
+
+</div>
+</section>
+
+<div id="lightbox" onclick="this.style.display='none'">
+<img id="view" alt="">
+</div>
+
+<script>
+/* 磁性鼠标 */
+const cursor=document.getElementById('cursor');
+let mouseX=0,mouseY=0,cursorX=0,cursorY=0;
+
+document.addEventListener('mousemove',(e)=>{
+mouseX=e.clientX;
+mouseY=e.clientY;
+});
+
+function animateCursor(){
+cursorX+=(mouseX-cursorX)*0.15;
+cursorY+=(mouseY-cursorY)*0.15;
+cursor.style.left=cursorX+'px';
+cursor.style.top=cursorY+'px';
+requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+/* 图片放大 */
+function openImg(src){
+document.getElementById('lightbox').style.display='flex';
+document.getElementById('view').src=src;
+}
+</script>
+
+</body>
+</html>
